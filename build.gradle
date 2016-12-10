@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+//        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.48'
+        classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'
+//        classpath 'org.akhikhl.gretty:gretty:+'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
+    }
+}
+
+repositories {
+    maven {
+        url 'https://maven-central.storage.googleapis.com'
+    }
+    jcenter()
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+//apply plugin: 'org.akhikhl.gretty'
+apply plugin: 'com.google.cloud.tools.appengine'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile 'com.google.appengine:appengine:+'
+}
+
+//gretty {
+//    port = 8080
+//    contextPath = '/'
+//    servletContainer = 'jetty9'
+//}
+
+appengine {
+
+    deploy {
+        stopPreviousVersion = true
+        promote = true
+    }
+
+}
+
+group = 'com.zmlx.home'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
