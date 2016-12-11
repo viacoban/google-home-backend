@@ -1,10 +1,12 @@
 package com.zmlx.home.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by viacoban on 12/10/16.
@@ -13,7 +15,7 @@ import java.util.*;
 @RequestMapping("/computer-time")
 public class ComputerTimeController {
 
-    @RequestMapping(value = "is-time", method = RequestMethod.POST)
+    @RequestMapping(value = "is-time")
     public TimeResponse computerTimeCheck() {
         TimeResponse response = new TimeResponse();
         response.setSpeech("Not, yet.");
