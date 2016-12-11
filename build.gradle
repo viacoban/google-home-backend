@@ -4,15 +4,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
     }
 }
 
 repositories {
-    maven {
-        url 'https://maven-central.storage.googleapis.com'
-    }
     jcenter()
     mavenCentral()
 }
@@ -20,21 +16,10 @@ repositories {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'com.google.cloud.tools.appengine'
 
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
-
-    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-    providedCompile 'com.google.appengine:appengine:+'
-}
-
-appengine {
-    deploy {
-        stopPreviousVersion = true
-        promote = true
-    }
 }
 
 group = 'com.zmlx.home'
